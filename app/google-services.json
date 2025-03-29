@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "728487131628",
+    "project_id": "intel5project",
+    "storage_bucket": "intel5project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728487131628:android:b8df7ac846ab03efd628c9",
+        "android_client_info": {
+          "package_name": "com.example.intelclassone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728487131628-0dkgcncs1kpssqgccmbiabhttps8r2h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.intelclassone",
+            "certificate_hash": "c8ee1dedad5bc8d6f44d1a80a76bd76c50ffe94c"
+          }
+        },
+        {
+          "client_id": "728487131628-hcmhl42pht67m0ff2srj2j5721q1g8gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqM6xJBeCPupyy71vq272y-0RnBabtBq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728487131628-hcmhl42pht67m0ff2srj2j5721q1g8gi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

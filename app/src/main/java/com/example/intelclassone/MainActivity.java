@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AdaptiveVideoPlayerActivity.class);
+                Intent intent = new Intent(MainActivity.this, DateScrollerActivity.class);
                 intent.putExtra("subject_name", subject);
                 startActivity(intent);
             }

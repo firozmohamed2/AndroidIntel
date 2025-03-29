@@ -1,4 +1,5 @@
 <resources>
-    <!--    <string name="app_name">intelClassOne</string>-->
+        <string name="app_name">intelClassOne</string>
     <!--    <string name="intel_class_1">Intel class 1</string>-->
+<string name="web_client_id">728487131628-8581qc7j83k8diijatutcfseqqvl12dr.apps.googleusercontent.com</string>
 </resources>
