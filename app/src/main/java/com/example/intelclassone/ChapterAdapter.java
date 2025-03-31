@@ -31,12 +31,15 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     @Override
     public void onBindViewHolder(@NonNull ChapterViewHolder holder, int position) {
         String chapter = chapterList.get(position);
-        holder.chapterName.setText(chapter);
+
+        holder.chapterNumber.setText(String.valueOf(position + 1)); // Set chapter number
+        holder.chapterName.setText(chapter); // Set chapter name
 
         // Click listener for each chapter item
         holder.itemView.setOnClickListener(v -> {
             Toast.makeText(v.getContext(), "Clicked: " + chapter, Toast.LENGTH_SHORT).show();
         });
+
     }
 
     @Override
@@ -45,11 +48,13 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     }
 
     public static class ChapterViewHolder extends RecyclerView.ViewHolder {
-        TextView chapterName;
+        TextView chapterName,chapterNumber;
 
         public ChapterViewHolder(@NonNull View itemView) {
             super(itemView);
             chapterName = itemView.findViewById(R.id.chapterName);
+            chapterNumber = itemView.findViewById(R.id.chapterNumber);
+
         }
     }
 }

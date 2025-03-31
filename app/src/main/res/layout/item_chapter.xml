@@ -7,11 +7,28 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/chapterName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Chapter Number TextView -->
+        <TextView
+            android:id="@+id/chapterNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingEnd="8dp"/>
+
+        <!-- Chapter Name TextView -->
+        <TextView
+            android:id="@+id/chapterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

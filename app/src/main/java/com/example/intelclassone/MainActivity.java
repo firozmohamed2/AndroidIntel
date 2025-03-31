@@ -3,6 +3,7 @@ package com.example.intelclassone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         setContentView(R.layout.activity_main);
-        CardView mathsCard = findViewById(R.id.mathsCard);
-        CardView physicsCard = findViewById(R.id.physicsCard);
-        CardView chemistryCard = findViewById(R.id.chemistryCard);
-        CardView biologyCard = findViewById(R.id.biologyCard);
+        LinearLayout mathsCard = findViewById(R.id.mathsCard);
+        LinearLayout physicsCard = findViewById(R.id.physicsCard);
+        LinearLayout chemistryCard = findViewById(R.id.chemistryCard);
+        LinearLayout biologyCard = findViewById(R.id.biologyCard);
 
         // Set click listeners
         setCardClickListener(mathsCard, "Maths");
@@ -34,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         setCardClickListener(biologyCard, "Biology");
     }
 
-    private void setCardClickListener(CardView card, final String subject) {
+    private void setCardClickListener(LinearLayout card, final String subject) {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DateScrollerActivity.class);
+                Intent intent = new Intent(MainActivity.this, YtbActivity.class);
                 intent.putExtra("subject_name", subject);
                 startActivity(intent);
             }
