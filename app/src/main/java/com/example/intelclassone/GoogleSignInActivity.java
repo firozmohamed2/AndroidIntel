@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GoogleSignInActivity extends AppCompatActivity {
 
@@ -31,11 +32,19 @@ public class GoogleSignInActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
     private FirebaseAuth firebaseAuth;
     private TextView txtUserInfo;
+    FirebaseFirestore db;
+    FirebaseUser currentUser;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        db = FirebaseFirestore.getInstance();
+
+
 
         txtUserInfo = findViewById(R.id.txtUserInfo);
 
@@ -51,7 +60,7 @@ public class GoogleSignInActivity extends AppCompatActivity {
         findViewById(R.id.btnGoogleSignIn).setOnClickListener(v -> signIn());
 
         // Check if user is already logged in
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+         currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
             redirectToMainActivity();
             return; // Stop further execution
@@ -114,10 +123,43 @@ public class GoogleSignInActivity extends AppCompatActivity {
     }
 
     private void redirectToMainActivity() {
-        Intent intent = new Intent(GoogleSignInActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish(); // Close GoogleSignInActivity
+
+
+        db.collection("intelUsers").document(currentUser.getEmail())
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        if (documentSnapshot.contains("option")) {
+                            String optionValue = documentSnapshot.getString("option");
+                            Log.d("FirestoreCheck", "Option exists: " + optionValue);
+
+                            // You can now use the optionValue as needed
+                            Intent intent = new Intent(GoogleSignInActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish(); // Close GoogleSignInActivity
+                        } else {
+                            Log.d("FirestoreCheck", "Option field does not exist.");
+                            // Option field is missing
+                            Intent intent = new Intent(GoogleSignInActivity.this, ProfileActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish(); // Close GoogleSignInActivity
+                        }
+                    } else {
+                        Log.d("FirestoreCheck", "User document does not exist.");
+                        Intent intent = new Intent(GoogleSignInActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish(); // Close GoogleSignInActivity
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("FirestoreCheck", "Error checking document", e));
+
+
+
+
+
     }
 
 }

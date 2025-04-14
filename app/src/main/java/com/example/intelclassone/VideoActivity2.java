@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,9 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.ui.PlayerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VideoActivity2 extends AppCompatActivity {
 
     private ExoPlayer player;
@@ -31,13 +35,17 @@ public class VideoActivity2 extends AppCompatActivity {
     private static final String VIDEO_URL = "https://dklc7mpgvbwz0.cloudfront.net/videoplayback.mp4";
     private static final String PREFS_NAME = "VideoPrefs";
     private static final String VIDEO_POSITION_KEY = "video_position";
-    private long playbackPosition = 0L;
 
     private Handler positionHandler;
     private Runnable positionRunnable;
     private boolean jumpedTo15 = false;
     private boolean jumpedTo55 = false;
-    private boolean playbackStarted = false;
+
+    private long playbackPosition = 0L;
+    private boolean resumeHandled = false;
+    long startPosition , endPosition;
+
+    private List<TimeRange> timeRanges;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -56,6 +64,7 @@ public class VideoActivity2 extends AppCompatActivity {
         loadingSpinner = findViewById(R.id.loadingSpinner);
 
         playbackPosition = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).getLong(VIDEO_POSITION_KEY, 0);
+
     }
 
     private void initializePlayer() {
@@ -85,19 +94,18 @@ public class VideoActivity2 extends AppCompatActivity {
                     } else if (state == Player.STATE_READY) {
                         loadingSpinner.setVisibility(View.GONE);
 
-                        // Only once
-                        if (!playbackStarted) {
-                            playbackStarted = true;
-                            player.seekTo(10000); // Start at 10 seconds
+                        if (!resumeHandled) {
+                            player.seekTo(playbackPosition);
                             player.play();
+                            resumeHandled = true;
                             startPositionMonitoring();
                         }
-
                     }
                 }
             });
         }
     }
+
 
     private void startPositionMonitoring() {
         positionHandler = new Handler(Looper.getMainLooper());
@@ -107,6 +115,14 @@ public class VideoActivity2 extends AppCompatActivity {
             public void run() {
                 if (player != null && player.getPlaybackState() == Player.STATE_READY && player.getPlayWhenReady()) {
                     long currentPos = player.getCurrentPosition();
+
+
+                    if (isInTimeRange(currentPos)) {
+                        Toast.makeText(VideoActivity2.this, "is in range", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(VideoActivity2.this, "Not in any range.", Toast.LENGTH_SHORT).show();
+                    }
+
 
                     if (currentPos < 30000 && !jumpedTo15) {
                         player.seekTo(15000);
@@ -147,7 +163,7 @@ public class VideoActivity2 extends AppCompatActivity {
 
             player.release();
             player = null;
-            playbackStarted = false;
+            resumeHandled = false;
         }
     }
 
@@ -184,6 +200,7 @@ public class VideoActivity2 extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -191,4 +208,32 @@ public class VideoActivity2 extends AppCompatActivity {
             releasePlayer();
         }
     }
+
+
+    public static class TimeRange {
+        public long start;
+        public long end;
+
+        public TimeRange(long start, long end) {
+            this.start = start;
+            this.end = end;
+        }
+    }
+    private void setupTimeRanges() {
+        timeRanges = new ArrayList<>();
+        timeRanges.add(new TimeRange(0, 15000));
+        timeRanges.add(new TimeRange(40000, 55000));
+        timeRanges.add(new TimeRange(70000, 90000));
+    }
+
+    // ✅ Check if current time is in any range
+    private boolean isInTimeRange(long currentTime) {
+        for (TimeRange range : timeRanges) {
+            if (currentTime >= range.start && currentTime <= range.end) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

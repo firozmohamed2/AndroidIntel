@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, VideoActivity2.class));
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish(); // Close this activity
             }
         }, 2000);

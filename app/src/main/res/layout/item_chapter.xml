@@ -1,34 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    android:orientation="vertical"
+    >
 
+    <!-- Content Row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="16dp">
 
         <!-- Chapter Number TextView -->
-        <TextView
-            android:id="@+id/chapterNumber"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:paddingEnd="8dp"/>
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="17dp"
+            app:cardElevation="0dp"
+            android:layout_marginHorizontal="6dp">
+            <TextView
+                android:id="@+id/chapterNumber"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:textSize="14dp"
+                android:alpha="0.7"
+                android:textStyle="bold"
+                android:background="#ECF6FF"
+                android:fontFamily="@font/funnel_sans_bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10"
+                android:textColor="@android:color/black" />
+        </androidx.cardview.widget.CardView>
 
         <!-- Chapter Name TextView -->
         <TextView
             android:id="@+id/chapterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fs_l"
+            android:layout_gravity="center_vertical"
             android:textSize="18sp"
-            android:textColor="@android:color/black"/>
+            android:alpha="0.7"
+            android:text="Intel Classes"
+            android:textColor="@android:color/black" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.3"
+        android:background="#CCCCCC" />
+
+</LinearLayout>

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <!-- Toolbar with App Name & Profile Icon -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:titleTextColor="#3F51B5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="1dp"
+        app:layout_constraintHeight_default="wrap">
+
+        <TextView
+            android:id="@+id/profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:padding="8dp"
+            android:src="@drawable/img"
+            android:fontFamily="@font/fs_m"
+            android:textSize="17dp"
+            android:textFontWeight="600"
+            android:textStyle="bold"
+            android:text="Plus two science (kerala board) "
+            android:textColor="#3B4DB2"
+            android:contentDescription="Profile" />
+        <ImageView
+            android:id="@+id/down_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:src="@drawable/down_arrow"
+            android:contentDescription="Profile" />
+        <!-- Profile Icon -->
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:padding="0dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/profile"
+            android:contentDescription="Profile" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#FF0101"
+            android:layout_gravity="center_vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/live_img"
+                android:background="#fff"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="DAILY CLASS"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:id="@+id/daily_class_card"
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <TextView
+                android:id="@+id/greeting_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/funnel_sans_bold"
+                android:maxLines="2"
+                android:lines="2"
+                android:ellipsize="end"
+
+                android:text="Good Evening \n Goku"
+                android:textSize="35dp"
+                android:textFontWeight="700"
+
+                android:textStyle="bold"
+                android:textColor="#3B4DB2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/daily_class_video_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:layout_margin="8dp"
+                android:background="#abd7a6"
+                app:layout_constraintTop_toBottomOf="@id/greeting_text"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:padding="10dp">
+
+                   <ImageView
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       app:layout_constraintTop_toTopOf="parent"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       android:src="@drawable/video_2"
+                       android:id="@+id/daily_task_image"
+                       />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="12dp"
+                        app:layout_constraintLeft_toRightOf="@id/daily_task_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Maths Relations and
+functions Class II tomorrow also"
+                        android:textSize="16dp"
+                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#009688"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/subjects_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textSize="17dp"
+        android:textFontWeight="600"
+
+        android:textStyle="bold"
+        android:text="Subjects"
+        android:textColor="#3B4DB2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/daily_class_card" />
+
+
+
+
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            app:layout_constraintTop_toBottomOf="@id/subjects_text"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_marginTop="50dp"
+
+            android:background="#FFFFFF">
+
+
+
+        
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/mathsCard"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+
+                android:padding="6dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/math"
+                    android:layout_gravity="center"
+                    android:background="#fff"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:text="Mathematics"
+                    android:fontFamily="@font/fs_m"
+                    android:textSize="18dp"
+                    android:textFontWeight="600"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/physicsCard"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:layout_marginHorizontal="4dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/physics"
+                android:layout_gravity="center"
+                android:background="#fff"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Physics"
+                android:fontFamily="@font/fs_m"
+                android:textSize="18dp"                android:textFontWeight="600"
+                android:textStyle="bold"
+                android:textColor="#000"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_weight="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+
+            android:id="@+id/chemistryCard"
+            android:padding="6dp"
+            android:layout_marginHorizontal="4dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/chem"
+                android:layout_gravity="center"
+                android:background="#fff"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chemistry"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/fs_m"
+                android:textSize="18dp"                android:textFontWeight="600"
+                android:textStyle="bold"
+                android:textColor="#000"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/biologyCard"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="4dp"
+                    android:padding="6dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/bio"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/fs_m"
+                        android:text="biology"
+                        android:textSize="18dp"
+                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/geoCard"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/civics"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="Civics"
+                        android:fontFamily="@font/fs_m"
+                        android:textSize="18dp"                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_weight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:id="@+id/pyqCard"
+                    android:padding="6dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/geography"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Geography"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/fs_m"
+                        android:textSize="18dp"                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/civics2Card"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="4dp"
+                    android:padding="6dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/politics"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:text="History"
+                        android:fontFamily="@font/fs_m"
+                        android:textSize="18dp"                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/geo2Card"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/computer"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:maxLines="2"
+                        android:lines="2"
+                        android:gravity="center"
+                        android:ellipsize="end"
+                        android:text="Competitive \n Exam mocks"
+                        android:fontFamily="@font/fs_m"
+                        android:textSize="18dp"                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_weight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+
+                    android:id="@+id/pyq2Card"
+                    android:padding="6dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/pyq"
+                        android:layout_gravity="center"
+                        android:background="#fff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:lines="2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:text="Previous year \n questions"                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/fs_m"
+                        android:textSize="18dp"                        android:textFontWeight="600"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+</GridLayout>
+
+    <!-- GridLayout for Subjects -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,7 +46,7 @@ public class AdaptiveVideoPlayerActivity extends AppCompatActivity {
 
 
         playerView = findViewById(R.id.playerView);
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         tabData = new HashMap<>();
         viewPager = findViewById(R.id.viewPager);  // Ensure this ID matches your XML
 
